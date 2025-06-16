@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head th:replace="~{fragments::header}">
+    <title>Yearly Revenue</title>
+</head>
+
+<body id="page-top">
+
+<div id="wrapper">
+
+    <ul th:replace="~{fragments::sidebar}"></ul>
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <div id="content">
+
+            <nav th:replace="~{fragments::top-navbar}"></nav>
+            <div class="container-fluid">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Doanh Thu Và Lợi Nhuận Trong  (Year: <span th:text="${year}"></span>)</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h5 class="mb-2 text-gray-800">Doanh Thu</h5>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                        <tr>
+                                            <th>Month</th>
+                                            <th>Doanh Thu (VND)</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="revenue, month : ${monthlyRevenues}">
+                                            <td th:text="${month.index + 1}"></td>
+                                            <td th:text="${revenue}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h5 class="mb-2 text-gray-800">Lơi Nhuận</h5>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
+                                        <thead>
+                                        <tr>
+                                            <th>Month</th>
+                                            <th>Lợi Nhuận (VND)</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="profit1, month : ${profit}">
+                                            <td th:text="${month.index + 1}"></td>
+                                            <td th:text="${profit1}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <footer th:replace="~{fragments::footer}"></footer>
+    </div>
+</div>
+<a th:replace="~{fragments::scroll}"></a>
+
+<div th:replace="~{fragments::script}"></div>
+<script th:src="@{/vendor/chart.js/Chart.min.js}"></script>
+
+<script th:src="@{/js/demo/chart-area-demo.js}"></script>
+<script th:src="@{/js/demo/chart-pie-demo.js}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head th:replace="~{fragments::header}">
+    <title>Monthly Profit</title>
+</head>
+
+<body id="page-top">
+
+<div id="wrapper">
+
+    <ul th:replace="~{fragments::sidebar}"></ul>
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <div id="content">
+
+            <nav th:replace="~{fragments::top-navbar}"></nav>
+            <div class="container-fluid">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Monthly Profit</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div id="chartContainer">
+                                    <canvas id="myChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <th>Month</th>
+                                        <td th:text="${month}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Year</th>
+                                        <td th:text="${year}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total Profit</th>
+                                        <td th:text="${#numbers.formatDecimal(profit, 0, 'COMMA')}"> VND</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="~{fragments::footer}"></footer>
+    </div>
+</div>
+
+<a th:replace="~{fragments::scroll}"></a>
+<div th:replace="~{fragments::script}"></div>
+<script th:src="@{/vendor/chart.js/Chart.min.js}"></script>
+<script th:src="@{/js/demo/chart-area-demo.js}"></script>
+<script th:src="@{/js/demo/chart-pie-demo.js}"></script>
+
+</body>
+
+</html>

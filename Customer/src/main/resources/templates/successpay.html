@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <title>MoMo Payment Success</title>
+    <th:block th:replace="~{fragments::head}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{fragments::main-header}"></th:block>
+
+<div class="container mt-5">
+    <div class="alert alert-success" role="alert">
+        <h1>Payment Successful!</h1>
+        <p>Your MoMo payment for order #{{orderId}} has been processed successfully.</p>
+    </div>
+</div>
+
+<p class="text-center mt-3">
+    You will be redirected to the shop page shortly.
+</p>
+
+<script>
+    setTimeout(function() {
+        window.location.href = "/shop"; // Redirect to shop page after a few seconds
+    }, 3000); // Redirect after 3 seconds
+</script>
+
+<th:block th:replace="~{fragments::footer}"></th:block>
+
+<th:block th:replace="~{fragments::script}"></th:block>
+</body>
+</html>
